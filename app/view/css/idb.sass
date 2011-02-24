@@ -32,11 +32,22 @@ body
   :color = !clr_dark
   .img-box
     :display inline
+    :position relative
+  .img-side
+    :position absolute
+    :background-color = !clr_dark
+    :color = !clr_lighter1
+    :opacity 0.7
+    :display none
+    :text-align right
+    :border-bottom 2px solid silver
+    :border-color-bottom = !clr_lighter1 - 30
   img
-    :border 1px solid silver
-    :border-color = !clr_lighter1
+    :-moz-box-shadow 3px 3px 3px #999
+    :-webkit-box-shadow 3px 3px 3px #999
     &:hover
-      :border-bottom-color = !clr_light2
+      :-moz-box-shadow 5px 5px 5px #888
+      :-webkit-box-shadow 5px 5px 5px #888
     &.thumb
       :width 50px
       :height 50px
@@ -48,16 +59,33 @@ body
     :text-align center
     :margin-bottom 20px
     &.top
+      .img-side
+        :top -304px
+        :width 320px
     &.top-3
+      .img-side
+        :top -184px
+        :width 200px
       .medium
+        :margin-right 10px
         :width 200px
         :height 200px
     &.top-12
+      .img-side
+        :top -84px
+        :width 100px
       .medium
+        :margin-right 7px
         :width 100px
         :height 100px
     &.top-rest
-      :margin-top 30px
+      .img-side
+        :top -34px
+        :width 50px
+        :font-size 0.7em
+      .thumb
+        :margin-top 30px
+        :margin-right 5px
 #head
   :margin-left 0
   :background-color = !clr_dark
