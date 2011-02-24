@@ -14,7 +14,7 @@ class ApiController < IDBController
       FileUtils.mkdir_p(File.dirname(to))
       FileUtils.copy(src, to)
     end
-    to
+    File.join(MediaPath, to)
   end
 
   def self.upload_file(name, extname, tempfile, filename, type)
