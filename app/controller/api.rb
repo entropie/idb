@@ -19,7 +19,7 @@ class ApiController < IDBController
 
   def self.upload_file(name, extname, tempfile, filename, type)
     filec = File.open(tempfile.path, 'rb').read
-    fname = "original/#{name}"
+    fname = "original/#{Digest::SHA1.hexdigest(name)}.#{extname}"
     copy_uploaded_file(tempfile.path, fname)
   end
 
@@ -30,6 +30,7 @@ class ApiController < IDBController
   def mk_public_path(f)
     f.gsub(File.join(IDB::Source, "app/public"), '')
   end
+  private :mk_public_path
 
   def upload
     response[ 'Content-Type' ] = 'application/json'
@@ -38,14 +39,13 @@ class ApiController < IDBController
       tempfile, filename, @type = request[:file].
         values_at(:tempfile, :filename, :type)
 
-      @extname, @basename = File.extname(filename), File.basename(filename)
+      @extname, @basename = File.extname(name), File.basename(name)
       @file_size = tempfile.size
 
       new_file = ApiController::upload_file(name, @extname, tempfile, filename, @type)
 
       IDB::ResizeFacility::ImageResizeFacility.new{ resize(new_file) }.start(:thumbnail, :medium)
 
-      mk_public_path = proc{|f|  }
       ret = {
         :orginal     => mk_public_path(new_file),
         :thumbnail   => mk_public_path(new_file.gsub(/original/, 'thumbnail')),
