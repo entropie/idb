@@ -108,7 +108,9 @@ module IDB
 
       def filename_for(pol)
         name = File.basename(path.path)
-        to = File.dirname(path.path) << "../%s/#{name}"
+        to = File.dirname(path.path) << "/../%s/#{name}"
+        p to
+
         FileUtils.mkdir_p(File.dirname(to))
         filename =
           case pol
