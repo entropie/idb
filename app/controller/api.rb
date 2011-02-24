@@ -18,7 +18,7 @@ class ApiController < IDBController
 
   def self.upload_file(name, extname, tempfile, filename, type)
     filec = File.open(tempfile.path, 'rb').read
-    fname = "#{name}#{extname}"
+    fname = "original/#{name}#{extname}"
 
     copy_uploaded_file(tempfile.path, fname)
   end
@@ -29,9 +29,6 @@ class ApiController < IDBController
 
   def upload
     if request.post?
-
-      pp request.params
-      
       name = request[:name]
       tempfile, filename, @type = request[:file].
         values_at(:tempfile, :filename, :type)
@@ -39,7 +36,7 @@ class ApiController < IDBController
       @extname, @basename = File.extname(filename), File.basename(filename)
       @file_size = tempfile.size
 
-      #ApiController::upload_file(name, @extname, tempfile, filename, @type)
+      ApiController::upload_file(name, @extname, tempfile, filename, @type)
 
       redirect ApiController.r(:index)
     end
