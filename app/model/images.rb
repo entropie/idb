@@ -58,6 +58,7 @@ module IDB
               new_img.facility = self
               new_img.resize(policy)
             rescue Magick::ImageMagickError
+              p $!
               bads << img
             end
           end
