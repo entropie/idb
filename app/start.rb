@@ -15,13 +15,6 @@ require "controller/main"
 require "controller/css"
 require "controller/api"
 
-begin
-  require "RMagick"
-  require "model/image_resize"
-rescue LoadError
-  warn "RMagick not available on this platform"
-end
-
 module IDB::App
   trait[:mode] = :devel
   if `hostname` =~ /xeno/

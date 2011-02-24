@@ -19,6 +19,15 @@ module IDB
   $: << File.join(Source, "lib/idb") unless $:.include?(File.join(Source, "lib/idb"))
   $: << File.join(Source, "app")     unless $:.include?(File.join(Source, "app"))
 
+  begin
+    require "RMagick"
+    require "model/image_resize"
+  rescue LoadError
+    warn "RMagick not available on this platform"
+  end
+
+  require "model/images.rb"
+
 end
 
 
