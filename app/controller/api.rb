@@ -6,14 +6,14 @@
 class ApiController < IDBController
   map "/api"
 
-  MediaPath = File.join(IDB::Source, "app/public/images"
+  MediaPath = File.join(IDB::Source, "app/public/images")
 
   def self.copy_uploaded_file(src, to)
-    Dir.chdir(Media.media_path) do
-      check = Repos.expand_path(to)
+    Dir.chdir(MediaPath) do
       FileUtils.mkdir_p(File.dirname(to))
       FileUtils.copy(src, to)
     end
+    to
   end
 
   def self.upload_file(name, extname, tempfile, filename, type)
@@ -21,12 +21,6 @@ class ApiController < IDBController
     fname = "#{name}#{extname}"
 
     copy_uploaded_file(tempfile.path, fname)
-
-    bmedia = OY::Media.create_bare(fname)
-    media  = bmedia.create do |pg|
-      pg.message = "update"
-      pg.data = filec
-    end
   end
 
   def index
@@ -35,6 +29,9 @@ class ApiController < IDBController
 
   def upload
     if request.post?
+
+      pp request.params
+      
       name = request[:name]
       tempfile, filename, @type = request[:file].
         values_at(:tempfile, :filename, :type)
@@ -42,9 +39,9 @@ class ApiController < IDBController
       @extname, @basename = File.extname(filename), File.basename(filename)
       @file_size = tempfile.size
 
-      ApiController::upload_file(name, @extname, tempfile, filename, @type)
+      #ApiController::upload_file(name, @extname, tempfile, filename, @type)
 
-      redirect SpecialController.r(:media, "#{name}#{@extname}")
+      redirect ApiController.r(:index)
     end
   end
 end
