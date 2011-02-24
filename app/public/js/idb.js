@@ -1,13 +1,13 @@
 (function( $ ){
 
     $.fn.setupImage = function(){
-      $(this).each(function(){
-        $(this).hover(function() {
-          $(".img-side", this).slideDown();
-        }, function() {
-          $(".img-side", this).delay(1000).slideUp();
-        });
-      });
+      // $(this).each(function(){
+      //   $(this).hover(function() {
+      //     $(".img-side", this).fadeIn();
+      //   }, function() {
+      //     $(".img-side", this).fadeOut();
+      //   });
+      // });
     };
 
 })(jQuery);

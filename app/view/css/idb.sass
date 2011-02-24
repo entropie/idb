@@ -33,6 +33,9 @@ body
   .img-box
     :display inline
     :position relative
+    &:hover
+      .img-side
+        :display block
   .img-side
     :position absolute
     :background-color = !clr_dark
@@ -42,6 +45,9 @@ body
     :text-align right
     :border-bottom 2px solid silver
     :border-color-bottom = !clr_lighter1 - 30
+    a
+      :color = !clr_lighter1
+      :text-decoration none
   img
     :-moz-box-shadow 3px 3px 3px #999
     :-webkit-box-shadow 3px 3px 3px #999
