@@ -9,7 +9,7 @@ class ApiController < IDBController
   MediaPath = File.join(IDB::Source, "app/public/images")
 
   def self.copy_uploaded_file(src, to)
-    puts ">>>#{src}:#{to}"
+    puts ">>>#{src}:#{File.dirname(to)}"
     Dir.chdir(MediaPath) do
       FileUtils.mkdir_p(File.dirname(to))
       FileUtils.copy(src, to)
