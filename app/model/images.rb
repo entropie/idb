@@ -109,7 +109,8 @@ module IDB
     end
 
     def tag(which = :original)
-      %Q(<div class="img-box"><div class="img-side">aa</div><img data-org="#{send(:original)}" src="#{send(which)}" class="#{css} #{which}" data-score="#{score}" /></div>)
+      dlink = %Q(<a href="#{send(:original)}" title="Permalink">#</a>)
+      %Q(<div class="img-box"><div class="img-side">#{dlink}</div><img data-org="#{send(:original)}" src="#{send(which)}" class="#{css} #{which}" data-score="#{score}" /></div>)
     end
 
     def _thumbnail
