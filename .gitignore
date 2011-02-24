@@ -1,0 +1,4 @@
+app/public/images/medium/*.*
+app/public/images/original/*.*
+app/public/images/thumbnail/*.*
+tmpimages/

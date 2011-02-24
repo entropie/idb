@@ -18,11 +18,19 @@ file = File.expand_path(ARGV.shift)
 
 targetDir = File.join(IDB::Source, "app/public")
 
-ret = JSON.parse(HTTPClient.post(TARGET, { :name => File.basename(file), :file => File.new(file)}).body.content)
-
-ret.each_pair{|what, image|
-  p File.join(targetDir, image)
+Dir.glob("../tmpimages/*.*").each {|rfile|
+  file = File.expand_path(rfile)
+  ret = JSON.parse(HTTPClient.
+                   post(TARGET, { :name => File.basename(file), :file => File.new(file)}).body.content)
+  $stdout.sync = true
+  ret.each_pair{|what, image|
+    imagefc = HTTPClient.get("http://78.46.106.73:8300#{image}").body.content
+    local_file = File.join(targetDir, image)
+    File.open(local_file, 'wb'){|fc| fc.write(imagefc)}
+    print "."
+  }
 }
+puts
 
 =begin
 Local Variables:
