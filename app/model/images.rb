@@ -53,6 +53,7 @@ module IDB
         spool.each do |img|
           policies.each do |policy|
             begin
+              puts ">>> Resize(#{policy}): #{img}"
               new_img = Image.new(img)
               new_img.facility = self
               new_img.resize(policy)
@@ -71,6 +72,10 @@ module IDB
 
       def spool
         @spool ||= []
+      end
+
+      def resize(image)
+        spool << image
       end
 
       def recursive_resize(dir)

@@ -37,7 +37,7 @@ class ApiController < IDBController
       @file_size = tempfile.size
 
       new_file = ApiController::upload_file(name, @extname, tempfile, filename, @type)
-      p new_file
+      ImageResizeFacility.new{ resize(new_file) }.start(:thumbnail, :medium)
 
       redirect ApiController.r(:index)
     end
