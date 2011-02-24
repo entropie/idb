@@ -17,7 +17,7 @@ require "controller/api"
 
 begin
   require "RMagick"
-  require "model/images"
+  require "model/image_resize"
 rescue LoadError
   warn "RMagick not available on this platform"
 end
