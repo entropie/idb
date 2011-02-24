@@ -8,6 +8,7 @@ require "net/http"
 require "uri"
 require "cgi"
 require "httpclient"
+require "pp"
 
 TARGET = "http://78.46.106.73:8300/api/upload"
 
@@ -17,7 +18,7 @@ uri = URI.parse(TARGET)
 host = uri.host
 path = uri.path[1..-1]
 
-p HTTPClient.post(TARGET, { :name => File.basename(file), :file => File.new(file)})
+puts HTTPClient.post(TARGET, { :name => File.basename(file), :file => File.new(file)}).body.content
 
 
 

@@ -41,10 +41,11 @@ class ApiController < IDBController
 
       IDB::ResizeFacility::ImageResizeFacility.new{ resize(new_file) }.start(:thumbnail, :medium)
 
+      mk_public_path = proc{|f| f.gsub(File.join(IDB::Source, "app/public", '')}
       ret = {
-        :orginal     => new_file,
-        :thumbnail   => new_file.gsub(/original/, 'thumbnail'),
-        :medium      => new_file.gsub(/original/, 'medium')
+        :orginal     => mk_public_path.call(new_file),
+        :thumbnail   => mk_public_path.call(new_file.gsub(/original/, 'thumbnail')),
+        :medium      => mk_public_path.call(new_file.gsub(/original/, 'medium'))
       }.to_json
     end
   end
