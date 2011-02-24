@@ -12,6 +12,7 @@ require "app"
 require "controller/idb"
 require "controller/main"
 require "controller/css"
+require "controller/api"
 
 module IDB::App
   trait[:mode] = :devel
