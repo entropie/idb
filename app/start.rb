@@ -15,8 +15,13 @@ require "controller/css"
 
 module IDB::App
   trait[:mode] = :devel
-  trait[:port] = 8300
-  trait[:ip]   = "localhost"
+  if `hostname` =~ /xeno/
+    trait[:port] = 8300
+    trait[:ip]   = "localhost"
+  else
+    trait[:port] = 8300
+    trait[:ip]   = "78.46.106.73"
+  end
   what = Config.server["daemon"] || :run
   run
 end
