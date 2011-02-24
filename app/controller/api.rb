@@ -28,6 +28,7 @@ class ApiController < IDBController
   end
 
   def upload
+    response[ 'Content-Type' ] = 'application/json'
     if request.post?
       name = request[:name]
       tempfile, filename, @type = request[:file].
@@ -40,7 +41,11 @@ class ApiController < IDBController
 
       IDB::ResizeFacility::ImageResizeFacility.new{ resize(new_file) }.start(:thumbnail, :medium)
 
-      redirect ApiController.r(:index)
+      ret = {
+        :orginal     => new_file,
+        :thumbnail   => new_file.gsub(/original/, 'thumbnail'),
+        :medium      => new_file.gsub(/original/, 'medium')
+      }.to_json
     end
   end
 end

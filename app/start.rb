@@ -6,6 +6,7 @@
 require "../lib/idb"
 require "ramaze"
 require "haml"
+require "json"
 
 require "app"
 

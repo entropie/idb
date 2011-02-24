@@ -108,19 +108,7 @@ module IDB
 
       def filename_for(pol)
         name = File.basename(path.path)
-        to = File.dirname(path.path) << "/../#{pol}/#{name}"
-        p to 
-
-        FileUtils.mkdir_p(File.dirname(to))
-        filename =
-          case pol
-          when :thumbnail
-            to % "thumb"
-          when :medium
-            to % "medium"
-          else
-            to % pol.to_s
-          end
+        File.dirname(path.path) << "/../#{pol}/#{name}"
       end
 
       def write
