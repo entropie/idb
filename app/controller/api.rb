@@ -10,17 +10,16 @@ class ApiController < IDBController
 
   def self.copy_uploaded_file(src, to)
     puts ">>>#{src} : (#{to})"
-    # Dir.chdir(MediaPath) do
-    #   FileUtils.mkdir_p(File.dirname(to))
-    #   FileUtils.copy(src, to)
-    # end
+    Dir.chdir(MediaPath) do
+      FileUtils.mkdir_p(File.dirname(to))
+      FileUtils.copy(src, to)
+    end
     to
   end
 
   def self.upload_file(name, extname, tempfile, filename, type)
     filec = File.open(tempfile.path, 'rb').read
     fname = "original/#{name}"
-    p 2
     copy_uploaded_file(tempfile.path, fname)
   end
 
@@ -37,7 +36,8 @@ class ApiController < IDBController
       @extname, @basename = File.extname(filename), File.basename(filename)
       @file_size = tempfile.size
 
-      ApiController::upload_file(name, @extname, tempfile, filename, @type)
+      new_file = ApiController::upload_file(name, @extname, tempfile, filename, @type)
+      p new_file
 
       redirect ApiController.r(:index)
     end
