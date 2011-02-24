@@ -16,14 +16,24 @@ module IDB
       end
       images
     end
+
+    def self.all
+      @images = load
+    end
   end
 
   class Image
+
     RelativePath = "app/public/images/original/%s"
+
     HTTPPath     = "/images/%s/%s"
 
     def initialize(image)
       @image = image
+    end
+
+    def expand_path(which = :original)
+      File.expand_path(alternative_image(which))
     end
 
     def path
@@ -36,6 +46,10 @@ module IDB
 
     def original
       path
+    end
+
+    def url(which = :original)
+      http_path(which)
     end
 
     def http_original
