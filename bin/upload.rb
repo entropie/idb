@@ -17,7 +17,7 @@ uri = URI.parse(TARGET)
 host = uri.host
 path = uri.path[1..-1]
 
-HTTPClient.post(TARGET, { :file => File.new(file)})
+HTTPClient.post(TARGET, { :name => File.basename(file), :file => File.new(file)})
 
 
 
