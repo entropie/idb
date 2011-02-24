@@ -21,8 +21,6 @@ rescue LoadError
   warn "RMagick not available on this platform"
 end
 
-
-
 module IDB::App
   trait[:mode] = :devel
   if `hostname` =~ /xeno/
