@@ -27,6 +27,10 @@ class ApiController < IDBController
     "asd"
   end
 
+  def mk_public_path(f)
+    f.gsub(File.join(IDB::Source, "app/public"), '')
+  end
+
   def upload
     response[ 'Content-Type' ] = 'application/json'
     if request.post?
@@ -41,11 +45,11 @@ class ApiController < IDBController
 
       IDB::ResizeFacility::ImageResizeFacility.new{ resize(new_file) }.start(:thumbnail, :medium)
 
-      mk_public_path = proc{|f| f.gsub(File.join(IDB::Source, "app/public", '')) }
+      mk_public_path = proc{|f|  }
       ret = {
-        :orginal     => mk_public_path.call(new_file),
-        :thumbnail   => mk_public_path.call(new_file.gsub(/original/, 'thumbnail')),
-        :medium      => mk_public_path.call(new_file.gsub(/original/, 'medium'))
+        :orginal     => mk_public_path(new_file),
+        :thumbnail   => mk_public_path(new_file.gsub(/original/, 'thumbnail')),
+        :medium      => mk_public_path(new_file.gsub(/original/, 'medium'))
       }.to_json
     end
   end
