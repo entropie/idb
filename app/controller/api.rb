@@ -19,7 +19,7 @@ class ApiController < IDBController
 
   def self.upload_file(name, extname, tempfile, filename, type)
     filec = File.open(tempfile.path, 'rb').read
-    fname = "original/#{Digest::SHA1.hexdigest(name)}.#{extname}"
+    fname = "original/#{Digest::SHA1.hexdigest(name)}#{extname}"
     copy_uploaded_file(tempfile.path, fname)
   end
 
