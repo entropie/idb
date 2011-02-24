@@ -3,42 +3,88 @@
 !clr_light2   = #29d9c2
 !clr_lighter1 = #bdf271
 !clr_lighter2 = #ffffa6
-
+!clr_white    = #fff
+!clr_silver   = silver
+!clr_bgcolor  = #F7F7F7
+  
 html
   :height 100%
 
 body
-  :color #222
   :height 100%
   :font-family tahoma, 'Times New Roman', Georgia, serif
+  :font-size 16px
+  :background-color = !clr_bgcolor
 
 #wrap
   :min-height 100%
   :height auto !important
   :height 100%
-  :margin 0 auto -50px
+  :margin 0 auto -35px
 
 #idb-wrap
 
 #content
-  :margin 40px
+  :margin-left 30px
+  :margin-right 30px
+  :margin-top 10px
+  :margin-bottom 10px  
   :color = !clr_dark
+  .img-box
+    :display inline
+  img
+    :border 1px solid silver
+    :border-color = !clr_lighter1
+    &:hover
+      :border-bottom-color = !clr_light2
+    &.thumb
+      :width 50px
+      :height 50px
+    &.original
+      :max-width 90%
 
+#body
+  .line
+    :text-align center
+    :margin-bottom 20px
+    &.top
+    &.top-3
+      .medium
+        :width 200px
+        :height 200px
+    &.top-12
+      .medium
+        :width 100px
+        :height 100px
+    &.top-rest
+      :margin-top 30px
 #head
   :margin-left 0
   :background-color = !clr_dark
-  :color = !clr_light2
-  :padding 30px
-  :padding-top 10px
-  :padding-left 40px
-
+  :border-bottom 3px solid silver
+  :border-color = !clr_dark + 50
+  :color = !clr_lighter1
+  :padding-left 30px
+  :height 40px
+  #menu
+    :padding-top 5px
+    ul
+      :lust-style-type none
+      :margin 0px
+      li
+        :padding 0px
+        :display inline
+        :padding-right 10px
 
 #footer
-  :height 50px
-  :background-color = !clr_dark
-  :color = !clr_light1  
-  :padding-left 40px  
-  .content
+  :height 32px
+  :background-color = !clr_dark - 20
+  :border-top 3px solid silver
+  :boder-color = !clr_dark + 50
+  :color = !clr_silver  
+  :padding-left 30px
+  :padding-right 30px
+  :text-align right
 
 .push
   :height 50px

@@ -2,8 +2,7 @@
 !!! Strict
 %html{:xmlns => "http://www.w3.org/1999/xhtml"}
   %head
-    %title
-      = IDB
+    %title= IDB
     %meta{'http-equiv' => "Content-Type",  :content => "text/html; charset=utf-8"}/
     %meta{'http-equiv' => "Cache-Control", :content => "NO-CACHE"}/
 
@@ -17,7 +16,18 @@
   %body
     #wrap
       #head
-        head
+        #menu
+          %ul
+            %li
+              %a.awesome.magenta.small{:href => MainController.r} Home
+            %li
+              %a.awesome.magenta.small{:href => MainController.r} Slideshow
+            %li
+              %a.awesome.magenta.small{:href => MainController.r} Upload
+            %li
+              %a.awesome.magenta.small{:href => MainController.r} Recent
+            %li
+              %a.awesome.magenta.small{:href => MainController.r(:random)} Random
       #idb-wrap
         #content
           = @content

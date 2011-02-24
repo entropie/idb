@@ -8,7 +8,12 @@ class MainController < IDBController
   engine :Haml
 
   def index
-    "lala"
+    @images = IDB::Images.all
+    "#{@images.size}"
+  end
+
+  def random
+    @img = IDB::Images.all.random
   end
 end
 
