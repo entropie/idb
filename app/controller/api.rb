@@ -57,9 +57,12 @@ class ApiController < IDBController
   def delete(img)
     response['Content-Type'] = 'application/json'
     i = 0
-    [:original, :thumbnail, :medium].each_with_index do |isize, i|
+    [:original, :thumbnail, :medium].each do |isize|
       path = File.join(MediaPath, isize.to_s, img)
-      FileUtils.rm(path)
+      if File.exist?(path)
+        FileUtils.rm(path)
+        i+=1
+      end
     end
     {:ok => true, :deleted_count => i}.to_json
   end
