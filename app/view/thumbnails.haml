@@ -1,0 +1,7 @@
+#body
+  .line.top-rest
+    %div#thumb-content
+    %ul#thumb-tabs
+      - thumblinks.each do |desc, link|
+        %li
+          %a{:href => link}= desc

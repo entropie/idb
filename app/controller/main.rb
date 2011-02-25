@@ -17,8 +17,18 @@ class MainController < IDBController
       @thumblinks << ["Slide #{pg+=1}", "/thumbs/#{i}/#{i+mod}"]
       i+=mod
     }
-    p @thumblinks
-    #exit
+  end
+
+  def thumbnails
+    @images = IDB::Images.all
+    @thumblinks = []
+    i = 0
+    pg = 0
+    mod = 95
+    @images.top(0..-1).each_slice(mod){|s|
+      @thumblinks << ["Slide #{pg+=1}", "/thumbs/#{i}/#{i+mod}"]
+      i+=mod
+    }
   end
 
   def thumbs(start, stop)
