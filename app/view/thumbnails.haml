@@ -1,9 +1,9 @@
 #body
-  .line.top-rest
+  .line.top-rest.thumbnails
     %div#thumb-content
       - thumblinks.each do |desc, link|
         %div{:style => "display:block"}
     %ul#thumb-tabs
       - thumblinks.each do |desc, link|
         %li
-          %a{:href => link}= desc
+          %a.awesome.silver.small{:href => link}= desc

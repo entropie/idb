@@ -104,16 +104,18 @@ body
       a
         :text-decoration none
         &.current
-          :color red
+          :color = !clr_lighter1
       #thumb-content
-        :min-height 180px
+        :min-height 120px
       .img-side
         :top -34px
         :width 50px
         :font-size 0.7em
       .thumb
-        :margin-top 30px
         :margin-right 5px
+      &.thumbnails
+        #thumb-content
+          :min-height 300px
 #head
   :margin-left 0
   :background-color = !clr_dark
