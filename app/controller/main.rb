@@ -9,11 +9,24 @@ class MainController < IDBController
 
   def index
     @images = IDB::Images.all
-    "#{@images.size}"
+    @thumblinks = []
+    i = 12
+    pg = 0
+    mod = 38
+    @images.top(11..-1).each_slice(mod){|s|
+      @thumblinks << ["Slide #{pg+=1}", "/thumbs/#{i}/#{i+mod}"]
+      i+=mod
+    }
+    p @thumblinks
+    #exit
+  end
+
+  def thumbs(start, stop)
+    @images = IDB::Images.all.top(start.to_i...stop.to_i)
   end
 
   def random
-    @img = IDB::Images.all.random
+    @images = IDB::Images.all.random
   end
 end
 

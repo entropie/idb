@@ -14,4 +14,9 @@
 
 $(document).ready(function () {
   $(".img-box").setupImage();
+  $("ul#thumb-tabs").tabs("#thumb-content", {
+    effect: 'ajax',
+    rotate: true
+  }).slideshow();
+  //$("ul#thumb-tabs").data("slideshow").play();
 });

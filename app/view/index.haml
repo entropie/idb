@@ -11,6 +11,8 @@
       - @images.top(3..11).each do |img|
         %li= img.tag(:medium)
   .line.top-rest
-    %ul
-      - @images.top(12..49).each do |img|
-        %li= img.tag(:thumb)
+    %div#thumb-content
+    %ul#thumb-tabs
+      - thumblinks.each do |desc, link|
+        %li
+          %a{:href => link}= desc

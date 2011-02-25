@@ -4,7 +4,7 @@
 #
 
 class IDBController < Ramaze::Controller
-  layout :layout
+  layout(:layout) { !request.xhr? }
 end
 
 
