@@ -14,9 +14,12 @@ require "../lib/idb"
 
 img = ARGV.shift
 
-TARGETS = ["http://78.46.106.73:8300/api/delete", "http://localhost:8300/api/delete/"]
+TARGETS = ["http://78.46.106.73:8300/api/delete/", "http://localhost:8300/api/delete/"]
 
-p HTTPClient.post(TARGET, { :name => File.basename(file), :file => File.new(file)}).body.content
+TARGETS.each do |target|
+  p HTTPClient.post(target + img).body.content
+end
+
 
 
 
