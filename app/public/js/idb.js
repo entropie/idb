@@ -14,8 +14,8 @@
 
 $(document).ready(function () {
   $("#preload a").preload({
-    threshold: 3,
-    onFinish: function(){ alert("preloaded");}
+    threshold: 3
+    //onFinish: function(){ alert("preloaded");}
 });
 
 
