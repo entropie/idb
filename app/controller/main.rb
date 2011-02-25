@@ -14,7 +14,7 @@ class MainController < IDBController
     pg = 0
     mod = 38
     @images.top(11..-1).each_slice(mod){|s|
-      @thumblinks << ["Slide #{pg+=1}", "/thumbs/#{i}/#{i+mod}"]
+      @thumblinks << ["#{pg+=1}", "/thumbs/#{i}/#{i+mod}"]
       i+=mod
     }
   end
@@ -22,11 +22,10 @@ class MainController < IDBController
   def thumbnails
     @images = IDB::Images.all
     @thumblinks = []
-    i = 0
-    pg = 0
+    i = pg = 0
     mod = 95
     @images.top(0..-1).each_slice(mod){|s|
-      @thumblinks << ["Slide #{pg+=1}", "/thumbs/#{i}/#{i+mod}"]
+      @thumblinks << ["#{pg+=1}", "/thumbs/#{i}/#{i+mod}"]
       i+=mod
     }
   end
