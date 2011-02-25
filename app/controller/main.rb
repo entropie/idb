@@ -35,7 +35,7 @@ class MainController < IDBController
   end
 
   def random
-    @images = IDB::Images.all.random
+    @img = IDB::Images.all.random
   end
 end
 
