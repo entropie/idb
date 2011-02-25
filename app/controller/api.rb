@@ -19,7 +19,7 @@ class ApiController < IDBController
 
   def self.upload_file(name, extname, tempfile, filename, type)
     filec = File.open(tempfile.path, 'rb').read
-    fname = "original/#{Digest::SHA1.hexdigest(name)}#{extname}"
+    fname = "original/#{Digest::SHA1.hexdigest(filec)}#{extname}"
     copy_uploaded_file(tempfile.path, fname)
   end
 
@@ -33,7 +33,7 @@ class ApiController < IDBController
   private :mk_public_path
 
   def upload
-    response[ 'Content-Type' ] = 'application/json'
+    response['Content-Type'] = 'application/json'
     if request.post?
       name = request[:name]
       tempfile, filename, @type = request[:file].
@@ -53,6 +53,15 @@ class ApiController < IDBController
       }.to_json
     end
   end
+
+  def delete(img)
+    response['Content-Type'] = 'application/json'
+    [:original, :thumbnail, :medium].each do |isize|
+      FileUils.rm(File.join(MediaPath, isize.to_s, img))
+    end
+    {:ok => true}.to_json
+  end
+
 end
 
 
