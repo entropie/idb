@@ -37,6 +37,14 @@ class MainController < IDBController
   def random
     @img = IDB::Images.all.random
   end
+
+  def img(*fragments)
+    @img = "/#{fragments.join("/")}"
+  end
+
+  def _thumbnails_for_preload
+    @images = IDB::Images.all
+  end
 end
 
 

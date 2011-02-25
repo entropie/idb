@@ -11,7 +11,9 @@
       - @images.top(3..11).each do |img|
         %li= img.tag(:medium)
   .line.top-rest
-    %div#thumb-content
+    #thumb-content
+      - thumblinks.each do |desc, link|
+        %div{:style => "display:block"}
     %ul#thumb-tabs
       - thumblinks.each do |desc, link|
         %li

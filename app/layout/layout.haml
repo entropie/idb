@@ -8,11 +8,14 @@
 
     %link{:rel => "stylesheet", :type => "text/css", :href => "/css/b-reset.css" }=''
     %link{:rel => "stylesheet", :type => "text/css", :href => "/css/b-base.css" }=''
-    %link{:rel => "stylesheet", :type => "text/css", :href => "/css/awesome.css" }=''    
+    %link{:rel => "stylesheet", :type => "text/css", :href => "/css/awesome.css" }=''
+    %link{:rel => "stylesheet", :type => "text/css", :href => "/css/jquery.fancybox.css" }=''
     %link{:rel => "stylesheet", :type => "text/css", :href => "/css/idb.css" }=''
     %script{:type => "text/javascript", :src => "/js/jquery.js"}=""
     %script{:type => "text/javascript", :src => "/js/jquery-ui.js"}=""
-    %script{:type => "text/javascript", :src => "/js/jquery.tools.min.js"}=""    
+    %script{:type => "text/javascript", :src => "/js/jquery.tools.min.js"}=""
+    %script{:type => "text/javascript", :src => "/js/jquery.fancybox.pack.js"}=""
+    %script{:type => "text/javascript", :src => "/js/jquery-preload-min.js"}=""    
     %script{:type => "text/javascript", :src => "/js/idb.js"}=""
   %body
     #wrap
@@ -33,6 +36,7 @@
               %a.awesome.magenta.small{:href => MainController.r(:random)} Random
       #idb-wrap
         #content
+          = render_partial "/_thumbnails_for_preload"
           = @content
         .push
     #footer

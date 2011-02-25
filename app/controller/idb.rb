@@ -5,6 +5,7 @@
 
 class IDBController < Ramaze::Controller
   layout(:layout) { !request.xhr? }
+  helper :render
 end
 
 

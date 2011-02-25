@@ -32,7 +32,7 @@ body
   :color = !clr_dark
   .img-box
     :display inline
-    :position relative
+    //:position relative
     &:hover
       .img-side
         :display block
@@ -56,6 +56,18 @@ body
       :height 50px
     &.original
       :max-width 90%
+.lfloat
+  :float left
+.rfloat
+  :float right
+
+#overlay
+  :width 1000px
+  .text
+    :width 200px
+  img
+    :max-width 80%
+    :max-height 80%
 
 #body
   ul
