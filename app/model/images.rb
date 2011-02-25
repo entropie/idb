@@ -11,6 +11,7 @@ module IDB
 
     def self.load
       images = self.new
+      puts ">>> LOADING"
       Dir.glob("#{File.join(ImageDir, 'original')}/*.*").each do |image|
         images << Image.new(File.basename(image), images)
       end
