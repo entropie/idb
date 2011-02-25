@@ -1,6 +1,8 @@
 #body
   .line.top-rest
     %div#thumb-content
+      - thumblinks.each do |desc, link|
+        %div{:style => "display:block"}
     %ul#thumb-tabs
       - thumblinks.each do |desc, link|
         %li
