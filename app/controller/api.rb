@@ -59,7 +59,7 @@ class ApiController < IDBController
     i = 0
     [:original, :thumbnail, :medium].each_with_index do |isize, i|
       path = File.join(MediaPath, isize.to_s, img)
-      FileUtils.rm()
+      FileUtils.rm(path)
     end
     {:ok => true, :deleted_count => i}.to_json
   end
