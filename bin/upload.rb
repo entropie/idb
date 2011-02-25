@@ -14,8 +14,6 @@ require "../lib/idb"
 
 TARGET = "http://78.46.106.73:8300/api/upload"
 
-file = File.expand_path(ARGV.shift)
-
 targetDir = File.join(IDB::Source, "app/public")
 
 $stdout.sync = true
