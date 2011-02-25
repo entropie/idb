@@ -10,10 +10,10 @@ class MainController < IDBController
   def index
     @images = IDB::Images.all
     @thumblinks = []
-    i = 12
+    i = 13
     pg = 0
     mod = 38
-    @images.top(11..-1).each_slice(mod){|s|
+    @images.top(12..-1).each_slice(mod){|s|
       @thumblinks << ["#{pg+=1}", "/thumbs/#{i}/#{i+mod}"]
       i+=mod
     }
