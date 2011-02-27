@@ -1,0 +1,3 @@
+[submodule "lib/vendor/rack-embed"]
+	path = lib/vendor/rack-embed
+	url = git@github.com:entropie/rack-embed.git
